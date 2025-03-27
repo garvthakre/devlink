@@ -1,0 +1,30 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+logs/
+*.log
+
+# Editor files
+.vscode/
+.idea/
+.DS_Store
+
+# Build files
+dist/
+build/
+
+# Miscellaneous
+*.swp
+*.swo
+*.swn
+
+# Ignore database files
+*.sqlite
+*.sqlite3
