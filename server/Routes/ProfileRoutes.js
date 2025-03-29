@@ -3,6 +3,20 @@ const Profile = require("../models/Profile"); // ✅ Correct import
 const auth = require("../middleware/authMiddleware"); // ✅ Use correct middleware
 const router = express.Router();
 
+router.get("/me", auth, async (req, res) => {
+    try {
+        const profile = await Profile.findOne({ user: req.user.id }).populate("user", "name email");
+
+        if (!profile) {
+            return res.status(404).json({ message: "Profile not found" });
+        }
+
+        res.json(profile);
+    } catch (error) {
+        res.status(500).json({ message: "Server Error", error: error.message });
+    }
+});
+
 router.post("/", auth, async (req, res) => {
     try {
         const { bio, skills, socialLinks } = req.body;
